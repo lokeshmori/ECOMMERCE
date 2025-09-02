@@ -1,0 +1,108 @@
+.flex-container{
+
+      
+       display: flex;
+       justify-content: center;
+       align-items: start;
+
+       margin: 0;
+       padding: 0;
+      padding-top: 70px;
+
+background-color : #191919;
+
+}
+
+.container{
+
+     background-color: #191919;
+
+      display: flex;
+
+      margin: 0;
+      padding: 0;
+      
+
+        
+}
+
+.account{
+
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      padding: 30px;
+      gap: 30px;
+
+        background :  black;
+
+        width: 30%;
+        height: 100vh;
+
+        color: #fff;
+}
+.contain{
+
+      
+      width: 80%;
+      height: 100vh;
+      background-color: #191919;
+
+         display: flex;
+         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        color: #fff;
+
+}
+.contain div{
+
+           display: flex ;
+           justify-content: center;
+           flex-direction: column;
+           align-items: center;
+         background-color : #3f3f3f;
+         margin: 30px;
+         width: 80%;
+         height: 20%;
+         border-radius: 10px;
+         text-align: center;
+}
+.account a , button {
+     
+      color: #fff;
+      text-decoration: none;
+      border: 2px,solid,black;
+      background: transparent;
+      
+}
+.notlogin{
+
+       width: 100%;
+      height: 100vh;
+      background-color: #191919;
+
+         display: flex;
+         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        color: #fff;
+       
+}
+.notlogin h1 ,h2 {
+
+       padding-top: 40px;
+        
+}
+.container1{
+
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+}
+
+

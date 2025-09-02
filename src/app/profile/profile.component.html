@@ -1,0 +1,87 @@
+<div class="flex-container">
+
+
+
+         @if(userName===undefined){
+                 
+            <div class="container1">
+                   <div class="nologin" >
+                        <h1>Hello, Welcome!</h1>
+                          <h1>
+                              you are not signup
+                              
+                          </h1>
+                          <h2><a  href="/login">login Now </a></h2>
+                   </div>
+                   </div>
+         } @else{
+
+         
+         
+   <div class="container">
+
+            <div class="account">
+               <div>
+              <h3>Welcome : {{userName}} </h3>
+                    </div>
+            <div><button (click)="showUpdate('cart')"><h6>My Cart</h6></button></div>
+            <div> <button (click)="showUpdate('order')"><h6>My Order</h6></button></div>
+            <div><h6> <button (click)="showUpdate('address')"> My Address </button></h6></div>
+            <div><h6><button (click)="showUpdate('white')"> My WhiteList </button></h6></div>
+            <div><button><h6 (click)="showUpdate('previlage')">My Previlage Offers</h6> </button></div>
+            <div> <button><a  href="login" ><h6>Logout</h6></a></button> </div>
+
+   </div> 
+   <div class="contain">
+
+
+          @if(signal=='cart'){
+                @for( item of carts ; track item){
+              <div> 
+                        <h1>{{item.title}}</h1>
+
+                         <h4>Price : ${{item.price}}</h4>
+                 </div>
+
+                }
+                 
+          } @else if(signal=='order'){
+
+              @for( item of orders ; track item){
+              <div> 
+                        <h1>{{item.title}}</h1>
+
+                         <h4>Price : ${{item.price}}</h4>
+
+                         <h6> Delivary On : {{item.delvary}}</h6>
+                 </div>
+
+                }
+
+
+          }@else if(signal=='address'){
+              
+                  <div>
+                       <h1>{{address}}</h1>
+                  </div>
+          }@else{
+
+              <div>
+                    <h1>{{whitelist}}</h1>
+                    <h6><a href="/">continue shopping </a></h6>
+                    
+                        
+               </div>
+          }
+            
+
+
+        
+
+   </div>
+
+
+
+</div>
+         }
+</div>

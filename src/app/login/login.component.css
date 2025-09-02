@@ -1,0 +1,100 @@
+.flex-container{
+
+      padding-top: 70px;
+
+        display: flex;
+      
+        justify-content: center;
+        align-items: center;
+         min-height: 100vh;
+    background: linear-gradient(90deg, #e2e2e2, #c9d6ff);
+}
+
+.container{
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #e2e2e2;
+           border-radius: 20px;
+           
+        height: 80%;
+        width: 60%;
+          
+}
+.container div{
+
+      
+       
+}
+
+.login{
+      background-color: #7494ec;
+
+        width: 50%;
+        height: 100%;
+         flex-wrap: wrap;
+         border-radius: 20px;
+}
+.register{
+       
+         width: 50%;
+        height: 100%;
+        display: flex;
+         flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px;
+        
+
+}
+.register button{
+
+         margin-top: 10px;
+       height: 40px;
+         border-radius: 10px;
+         padding-left: 20px;
+         padding-right: 20px;
+         background-color: #7494ec;
+
+}
+.form-container{
+
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+
+}
+
+.form-container label {
+ 
+         margin-top: 30px;
+}
+.form-container label,input{
+
+        margin-left: 35px;
+}
+.form-container input{
+
+         width: 80%;
+         height: 40px;
+         border-radius: 10px;
+          padding-left: 10px;
+          background: #eee;
+         
+
+}
+.form-container button{
+        
+      margin: 50px;
+      align-self: center;
+       height: 40px;
+         border-radius: 10px;
+         padding-left: 20px;
+         padding-right: 20px;
+         
+
+}

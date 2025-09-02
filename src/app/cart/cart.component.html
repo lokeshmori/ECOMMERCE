@@ -1,0 +1,47 @@
+<div class="flex-container">
+
+
+    
+  <div class="container">
+
+                 @if(product==null ){
+                   
+                  
+           <div>
+              <h1>Your Cart is Empty
+</h1>
+<h5> <a href="/">continue shopping </a></h5>
+           </div>
+
+                 }@else{
+
+                
+
+    <div class="image">
+      <img class="img" src="{{product.thumbnail}}" alt="image">
+    </div>
+
+    <div class="contain">
+      <h4>{{product.title}}</h4>
+      <span class="rating-out"> 3.5 <span class="rating">(453)</span> <span></span></span>
+
+      <h4> {{ (product.discountedTotal/product.quantity) | currency:'USD':'symbol':'1.0-0' }}</h4>
+      <span> {{product.discountPercentage }} % off , <span class="discount"> {{ product.price |
+          currency:'USD':'symbol':'1.0-0' }} </span> <span>( Save {{((product.discountedTotal/product.quantity) -
+          product.price)| currency:'USD':'symbol':'1.0-0' }} )</span></span>
+
+
+      <div class="cart-action">
+        <button class="buy" (click)="buyYourProduct()">Buy Now</button>
+        <button class="add" (click)="addYourProduct()" >Add Cart</button>
+      </div>
+
+    </div>
+ }
+
+  </div>
+
+
+     
+
+</div>

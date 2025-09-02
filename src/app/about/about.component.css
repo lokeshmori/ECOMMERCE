@@ -1,0 +1,44 @@
+.flex-container{
+padding-top: 70px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #3f3f3f;
+     
+      color: #fff;
+}
+.container{
+
+        display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+
+       
+
+}
+.container div{
+        
+          margin: 10px;
+          display: block;
+          justify-content: center;
+          align-items: center;
+          text-align: start;
+            gap: 20px;
+        height: 400px;
+        width: 400px;
+          background-color: #7494ec;
+         border-radius: 10px;
+         
+}
+.container div h2 ,h5, p{
+           
+      margin: 20px;
+
+        
+}
+.container div li{
+
+        margin-bottom: 10px;
+}

@@ -1,0 +1,71 @@
+<div class="flex-container">
+
+
+   @if(userLogIn){
+         <div class="container">
+                      
+                    
+                    <div class="login" >
+                  <form class="form-container" #userForm="ngForm" (ngSubmit)="addDetails(userForm.value)">
+                        
+                         <label for="name">User Full Name</label>
+                         <input type="text" placeholder="Name" name="name" ngModel> 
+                         
+                         
+                         <label for="email">Email</label>
+                         <input type="text" placeholder="Email" name="email" ngModel>
+                         
+                         
+                         <label for="pass">Password</label>
+                         <input type="text"  placeholder="Password" name="poss" ngModel>
+                            
+                            <button (click)="loginUser()">Login</button>
+                  </form>
+                  </div>
+
+                  <div class="register">
+                                <h1>Hello, Welcome!</h1>
+                                <span>Don't have an account?</span>
+                             <button (click)="toggleFunction()" >Register</button>
+                  </div>
+              </div>
+            } @else{
+
+              <div class="container">
+                      
+                    <div class="register">
+                                <h1>Welcome Back!</h1>
+                                <span>Already have an account?</span>
+                             <button (click)="toggleFunction()" >Login</button>
+                  </div>
+                  
+                    <div class="login">
+                  <form class="form-container" #userForm="ngForm" (ngSubmit)="addDetails(userForm.value)"  >
+                                 
+                         <label for="name">User Name</label>
+                         <input #name="ngModel" min="5" type="text" placeholder="Name" name="name" ngModel> 
+                         <span *ngIf=" name.invalid && name.touched">enter name</span>
+                         
+                         
+                         <label for="email">Email</label>
+                         <input #email="ngModel" type="email" placeholder="Email" name="email" ngModel>
+                         <span *ngIf=" email.invalid && email.touched">enter name</span>
+                         
+                         <label for="fullname">Full Name</label>
+                         <input #fullname="ngModel" type="text" placeholder="Fullname" name="fullname" ngModel>
+                         <span *ngIf=" fullname.invalid && fullname.touched">enter full name</span>
+                         
+                         <label for="password">Password</label>
+                         <input #password="ngModel" type="text"   placeholder="password" name="password" ngModel>
+                         <span *ngIf=" password.invalid && password.touched ">enter name</span>
+                            
+                            <button  (click)="registerUser()" [disabled]="userForm.invalid" >Register</button>
+                  </form>
+                  </div>
+
+                  
+              </div>
+
+                
+            }
+</div>

@@ -1,0 +1,100 @@
+.flex-container{
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    background-color: #000;
+    color: #fff;
+    font: bold;
+    position: fixed;
+    width: 100%;
+    height: min-content;
+
+    position: fixed;
+    margin-top: 0px;
+    padding: 0px;
+
+
+}
+.flex-contain{
+
+    display: flex;
+    justify-content: space-around;
+      flex-wrap: wrap;
+    align-items: center;
+        
+
+     
+}
+.flex-contain li{
+  
+       margin-left: 30px;
+       padding: 20px;
+        list-style-type: none;
+      
+}
+.flex-contain a{
+
+       text-decoration: none;
+       color: #fff;
+      
+}
+
+
+
+.active{
+
+    
+        
+         border-radius: 2.5px;
+                color: green;
+        background-color: green;
+         border:1px,solid,#fff;
+}
+
+
+ 
+
+.flex-logo{
+   display: flex;
+    justify-content: space-between;
+      flex-wrap: wrap;
+    align-items: center;
+     
+}
+
+.search {
+
+       
+         margin-left: 90px;
+        padding-left: 70px;
+
+}
+.form-control{
+
+    width: 300px;
+
+   
+    
+    
+
+}
+
+
+
+.brand {
+
+ display: inline-flex;
+    
+      margin-left: 30px;
+       padding-left: 20px;
+     
+}
+.brand h2{
+
+    margin: 0px;
+    padding: 0px;
+     
+}
