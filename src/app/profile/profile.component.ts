@@ -11,6 +11,8 @@ export class ProfileComponent {
 
         signal :string = " ";
 
+        title:string|undefined ;
+
         userName :string | undefined ;
         
 
@@ -26,6 +28,16 @@ export class ProfileComponent {
                         console.log(param['userData']);
 
                      this.userName = param['userData']
+
+                     this.title = param['title'] ;
+                          
+                       if(this.title !== undefined)
+                         this.signal = 'cart' ;
+                          this.showUpdate('cart')
+                        console.log(this.title);
+                     
+
+
 
                         
              })
@@ -43,7 +55,7 @@ export class ProfileComponent {
 
       showUpdate(val : string){
 
-console.log(val);
+       console.log(val);
 
            this.signal = val ;
            

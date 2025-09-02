@@ -18,7 +18,7 @@ export class CartComponent {
 
    
 
-  constructor( private productService:ProductService ,private router:ActivatedRoute , private http :HttpClient){
+  constructor( private productService:ProductService ,private router:ActivatedRoute , private http :HttpClient , private route :Router){
 
       
     }
@@ -64,11 +64,13 @@ export class CartComponent {
 
                     buyYourProduct(){
 
-                        console.log("submitted");
+                        
                         
                     }
                     addYourProduct(){
-                      console.log("submitted");
+                    
+                      this.route.navigate(['profile'],{queryParams:{title:this.product.title,price:this.product.title}} )
+                   console.log();
                       
                     }
 
