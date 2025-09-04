@@ -1,6 +1,6 @@
 <div class="flex-container">
-
-
+                             
+                               <h4> {{message}}</h4>
    @if(userLogIn){
          <div class="container">
                       
@@ -8,7 +8,7 @@
                     <div class="login" >
                                      
                   <form class="form-container" #userForm="ngForm" (ngSubmit)="login(userForm.value)">
-                                  <h4> {{message}}</h4>
+                                 
                         <label for="email">Email</label>
                          <input #email="ngModel" type="email" placeholder="Email" name="email" ngModel  required>
                          <span *ngIf=" email.invalid && email.touched">* required</span>
@@ -41,7 +41,7 @@
                     <div class="login">
                          
                   <form class="form-container" #userForm="ngForm" (ngSubmit)="register(userForm.value)"  >
-                                 <h4> {{message}}</h4>
+                                 
                          <label for="name">User Name</label>
                          <input #name="ngModel" min="5" type="text" placeholder="Name" name="name" ngModel required> 
                          <span *ngIf=" name.invalid && name.touched">* required</span>

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../model/user';
 import { AuthService } from '../services/auth.service';
 import { ProductService } from '../services/product.service';
 import { Product } from '../model/product';
 import { CommonModule } from '@angular/common';
+import { SignupService } from '../services/signup.service';
 
 @Component({
   selector: 'app-profile',
@@ -24,7 +25,7 @@ export class ProfileComponent {
         products : Product[] | null =null ;
         
 
-        constructor(private router :ActivatedRoute ,private auth : AuthService , private productService:ProductService){
+        constructor(private router :ActivatedRoute ,private auth : AuthService , private productService:ProductService , private route :Router ,private authenticated :SignupService){
 
                       
 
@@ -68,13 +69,14 @@ export class ProfileComponent {
       }
 
       logout(){
-          
+              this.authenticated.logout();
              this.auth.logout() ;
 
                
       }
             buyYourProduct(){
 
+                 this.route.navigate(['payment']);
                   
 
                       

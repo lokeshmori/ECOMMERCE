@@ -19,7 +19,7 @@ export class CartComponent {
 
     product : Product |null=null ;
     user:User | null = null ;
-    savedProd:Product[] | null =null ;
+    
 
    
 
@@ -53,9 +53,9 @@ export class CartComponent {
 
              
                   this.user = this.auth.getLoggedInUser();
-             this.savedProd= this.productService.getProduct(this.user!);
+             
                   
-                    if(this.user && this.product === null){
+                    if(this.product === null){
 
                          this.route.navigate(['profile']);
                     
@@ -74,17 +74,19 @@ export class CartComponent {
                   
 
                     buyYourProduct(){
+                      this.route.navigate(['payment']);
 
                         
                         
                     }
                     addYourProduct(){
 
-                      
+                       
+                          if(this.product !==null && this.user !==null){
                      
                         this.productService.addProduct(this.product! , this.user!);
                         
-                    
+                          }
                       this.route.navigate(['profile'])
                        console.log('go TO Profile');
                       

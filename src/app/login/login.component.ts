@@ -1,9 +1,10 @@
 import { NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { User } from '../model/user';
+import { SignupService } from '../services/signup.service';
 
 @Component({
   selector: 'app-login',
@@ -22,10 +23,14 @@ export class LoginComponent {
 
             
 
-             constructor(private auth:AuthService,private router :Router){
+             constructor(private auth:AuthService,private router :Router,private authenticated :SignupService){
 
              }
-
+                
+               
+                
+           
+                
         toggleFunction(){
 
              this.userLogIn = ! this.userLogIn ;
@@ -54,12 +59,12 @@ export class LoginComponent {
 
           this.userData =val;
 
-          console.log(this.userData.email , this.userData.password ,this.userData.name);
+          
             
                const success =   this.auth.login(this.userData.email , this.userData.password);
               
               if(success){
-                   
+                             this.authenticated.login();
                     this.router.navigate(['profile']) ;
               }else{
                 this.message ="Invalid Email Or Password" ;
