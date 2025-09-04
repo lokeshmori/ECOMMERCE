@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Optional } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from '../profile/profile.component';
+import { Product } from '../model/product';
+import { User } from '../model/user';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-cart',
@@ -14,20 +17,23 @@ import { ProfileComponent } from '../profile/profile.component';
 export class CartComponent {
 
 
- 
+    product : Product |null=null ;
+    user:User | null = null ;
+    savedProd:Product[] | null =null ;
 
    
 
-  constructor( private productService:ProductService ,private router:ActivatedRoute , private http :HttpClient , private route :Router){
+  constructor( private productService:ProductService ,private router:ActivatedRoute , private http :HttpClient , private route :Router ,
+    private auth:AuthService){
 
       
     }
 
-         login:boolean=true ;
+        
 
      
     
-        product :any;
+        //product :any;
 
     
              
@@ -35,29 +41,34 @@ export class CartComponent {
 
            ngOnInit(){
 
-             this.router.queryParams.subscribe((params)=>{
-                     this.product = JSON.parse( params['product']) ;
+                 
+         
+                          this.router.queryParams.subscribe((params)=>{
+                          
+                           this.product = JSON.parse( params['product']) ;
+                     
+                            
                     
-                 })
+                 });
 
-                    console.log('in cart');
+             
+                  this.user = this.auth.getLoggedInUser();
+             this.savedProd= this.productService.getProduct(this.user!);
+                  
+                    if(this.user && this.product === null){
+
+                         this.route.navigate(['profile']);
                     
-               console.log(this.product);
+                    }
+                            
+                  
+
+                   
                
        // this.router.data.subscribe((data)=>{this.name=data['name']})
          // this.name =  this.router.snapshot.paramMap.get('name');
 
-                    if(this.product.id==null){
 
-                        this.login = false ;
-
-                    }else{
-
-                       this.login =true ;
-                    }
-                     
-             
-                   
                    }
 
                   
@@ -68,9 +79,14 @@ export class CartComponent {
                         
                     }
                     addYourProduct(){
+
+                      
+                     
+                        this.productService.addProduct(this.product! , this.user!);
+                        
                     
-                      this.route.navigate(['profile'],{queryParams:{title:this.product.title,price:this.product.title}} )
-                   console.log();
+                      this.route.navigate(['profile'])
+                       console.log('go TO Profile');
                       
                     }
 

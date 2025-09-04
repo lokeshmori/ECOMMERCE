@@ -4,22 +4,21 @@
    @if(userLogIn){
          <div class="container">
                       
-                    
+                      
                     <div class="login" >
-                  <form class="form-container" #userForm="ngForm" (ngSubmit)="addDetails(userForm.value)">
-                        
-                         <label for="name">User Full Name</label>
-                         <input type="text" placeholder="Name" name="name" ngModel> 
+                                     
+                  <form class="form-container" #userForm="ngForm" (ngSubmit)="login(userForm.value)">
+                                  <h4> {{message}}</h4>
+                        <label for="email">Email</label>
+                         <input #email="ngModel" type="email" placeholder="Email" name="email" ngModel  required>
+                         <span *ngIf=" email.invalid && email.touched">* required</span>
                          
                          
-                         <label for="email">Email</label>
-                         <input type="text" placeholder="Email" name="email" ngModel>
-                         
-                         
-                         <label for="pass">Password</label>
-                         <input type="text"  placeholder="Password" name="poss" ngModel>
+                         <label for="password">Password</label>
+                         <input #password="ngModel" type="text"   placeholder="password" name="password" ngModel required>
+                         <span *ngIf=" password.invalid && password.touched ">* required</span>
                             
-                            <button (click)="loginUser()">Login</button>
+                            <button  [disabled]="userForm.invalid" >Login</button>
                   </form>
                   </div>
 
@@ -40,26 +39,24 @@
                   </div>
                   
                     <div class="login">
-                  <form class="form-container" #userForm="ngForm" (ngSubmit)="addDetails(userForm.value)"  >
-                                 
+                         
+                  <form class="form-container" #userForm="ngForm" (ngSubmit)="register(userForm.value)"  >
+                                 <h4> {{message}}</h4>
                          <label for="name">User Name</label>
-                         <input #name="ngModel" min="5" type="text" placeholder="Name" name="name" ngModel> 
-                         <span *ngIf=" name.invalid && name.touched">enter name</span>
+                         <input #name="ngModel" min="5" type="text" placeholder="Name" name="name" ngModel required> 
+                         <span *ngIf=" name.invalid && name.touched">* required</span>
                          
                          
                          <label for="email">Email</label>
-                         <input #email="ngModel" type="email" placeholder="Email" name="email" ngModel>
-                         <span *ngIf=" email.invalid && email.touched">enter name</span>
+                         <input #email="ngModel" type="email" placeholder="Email" name="email" ngModel required>
+                         <span *ngIf=" email.invalid && email.touched">* required</span>
                          
-                         <label for="fullname">Full Name</label>
-                         <input #fullname="ngModel" type="text" placeholder="Fullname" name="fullname" ngModel>
-                         <span *ngIf=" fullname.invalid && fullname.touched">enter full name</span>
                          
                          <label for="password">Password</label>
-                         <input #password="ngModel" type="text"   placeholder="password" name="password" ngModel>
-                         <span *ngIf=" password.invalid && password.touched ">enter name</span>
+                         <input #password="ngModel" type="text"   placeholder="password" name="password" ngModel required>
+                         <span *ngIf=" password.invalid && password.touched ">* required</span>
                             
-                            <button  (click)="registerUser()" [disabled]="userForm.invalid" >Register</button>
+                            <button   [disabled]="userForm.invalid" >Register</button>
                   </form>
                   </div>
 

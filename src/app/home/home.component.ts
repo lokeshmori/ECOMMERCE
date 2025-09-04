@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Product } from '../model/product';
+import { AuthService } from '../services/auth.service';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-home',
@@ -12,9 +15,12 @@ import { CommonModule } from '@angular/common';
 export class HomeComponent {
     user:string[] |undefined ;
 
+
+       product:Product|null=null ;
+
     productdetails:any ;
 
-      constructor(private productservice:ProductService , private router :Router){
+      constructor(private productservice:ProductService , private router :Router ,private auth:AuthService ){
 
       }
 
@@ -24,8 +30,11 @@ export class HomeComponent {
   
                this.productservice.getallData().subscribe((data:any)=>{
 
-                                 this.productdetails  = data.carts ;
-                 console.log(this.productdetails);
+                              
+                                this.productdetails  = data.carts ;
+                              
+                               
+                       console.log(this.productdetails);
                                 
                });
               
@@ -35,13 +44,14 @@ export class HomeComponent {
 
         
          
-      addcart( data :any){
-
-                     console.log(data);
-
-                      
-                     
-                this.router.navigate(['cart'],{queryParams:{product:JSON.stringify(data)}})
+      addcart( data :Product){
+                                    
+                                         
+                                        this.product = data ;
+                                        this.router.navigate(['cart'],{queryParams:{product:JSON.stringify(this.product)}});
+                                  
+                                         
+               
                
       }
 

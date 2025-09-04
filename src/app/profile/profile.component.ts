@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { User } from '../model/user';
+import { AuthService } from '../services/auth.service';
+import { ProductService } from '../services/product.service';
+import { Product } from '../model/product';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -14,9 +19,12 @@ export class ProfileComponent {
         title:string|undefined ;
 
         userName :string | undefined ;
+
+        user : User | null = null ;
+        products : Product[] | null =null ;
         
 
-        constructor(private router :ActivatedRoute){
+        constructor(private router :ActivatedRoute ,private auth : AuthService , private productService:ProductService){
 
                       
 
@@ -24,30 +32,26 @@ export class ProfileComponent {
 
            ngOnInit(){
                  
-             this.router.queryParams.subscribe((param)=>{
-                        console.log(param['userData']);
+              this.user = this.auth.getLoggedInUser();   
 
-                     this.userName = param['userData']
+              this.userName = this.user?.username ;
 
-                     this.title = param['title'] ;
+              if(this.user !==null){
+                 this.products = this.productService.getProduct(this.user!);
+                 console.log(this.products);
+                  
+                 this.signal='cart' ;
+              }
                           
-                       if(this.title !== undefined)
-                         this.signal = 'cart' ;
-                          this.showUpdate('cart')
-                        console.log(this.title);
-                     
-
-
-
                         
-             })
+            
            }
 
              carts: any[]=[{title:'Apple 12 pro' , price : 5900} ,{title:'Rolex Submariner Watch' , price : 5000} ];
-             orders :any[]=[{title:'Apple 12 pro' , price : 5900, delvary:'23-5-25'}] ;
-             address:string="House NO 568 Noida New Delhi zipcode-485643"
-
-             whitelist='Shoping Now';
+             orders :any[]=[{title:'Apple 12 pro' , price : 5900, delvary:'23-5-25'},{title:'Rolex Submariner Watch' , price : 5000 ,delivary:'31-05-25'}] ;
+             address:string="House no 568 Noida New Delhi zipcode-485643"
+             message='Shoping Now';
+             offer='There is No Special Offer Now';
 
 
 
@@ -62,4 +66,26 @@ export class ProfileComponent {
                
 
       }
+
+      logout(){
+          
+             this.auth.logout() ;
+
+               
+      }
+            buyYourProduct(){
+
+                  
+
+                      
+            }
+
+             removeProduct(product:Product){
+                  
+                  this.productService.deleteProduct(this.user!,product);
+                   console.log(product);
+                   
+                  
+             }
+        
 }

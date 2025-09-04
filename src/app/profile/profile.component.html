@@ -28,21 +28,49 @@
             <div> <button (click)="showUpdate('order')"><h6>My Order</h6></button></div>
             <div><h6> <button (click)="showUpdate('address')"> My Address </button></h6></div>
             <div><h6><button (click)="showUpdate('white')"> My WhiteList </button></h6></div>
-            <div><button><h6 (click)="showUpdate('previlage')">My Previlage Offers</h6> </button></div>
-            <div> <button><a  href="login" ><h6>Logout</h6></a></button> </div>
+            <div><button><h6 (click)="showUpdate('offer')">My Previlage Offers</h6> </button></div>
+            <div> <button (click)="logout()"><a  href="login" ><h6>Logout</h6></a></button> </div>
 
    </div> 
    <div class="contain">
 
 
           @if(signal=='cart'){
-                @for( item of carts ; track item){
-              <div> 
-                        <h1>{{item.title}}</h1>
 
-                         <h4>Price : ${{item.price}}</h4>
+                @for( product of products ; track product){
+              <div class="cart-contain"> 
+       <div class="image">
+      <img class="img"  src="{{product.thumbnail}}" alt="image">
+    </div>
+
+    <div class="product-contain">
+      <h4>{{product.title}}</h4>
+      <span class="rating-out"> 3.5 <span class="rating">(453)</span> <span></span></span>
+
+      <h4> {{ (product.discountedTotal/product.quantity) | currency:'USD':'symbol':'1.0-0' }}</h4>
+      <span> {{product.discountPercentage }} % off , <span class="discount"> {{ product.price |
+          currency:'USD':'symbol':'1.0-0' }} </span> <span>( Save {{((product.discountedTotal/product.quantity) -
+          product.price)| currency:'USD':'symbol':'1.0-0' }} )</span></span>
+
+          <div class="buyButton">
+
+      <button class="buy" (click)="buyYourProduct()">Buy Now</button>
+        <button class="add" (click)="removeProduct(product)" >Remove</button>
+    </div>
+    </div>
+    
+      
+   
                  </div>
 
+                } @empty{
+
+                    <div>
+                         <h1>Your Cart is Empty,
+</h1>
+                         <h1>{{message}}</h1>
+                    <h6><a href="/"> continue shopping </a></h6>
+                    </div>
                 }
                  
           } @else if(signal=='order'){
@@ -61,13 +89,21 @@
 
           }@else if(signal=='address'){
               
+            <div><h4> Address  : plat 345 new market bhoapl near bambay hospiatal</h4></div>
                   <div>
-                       <h1>{{address}}</h1>
+                       
+                       <h4>Address : {{address}}</h4>
                   </div>
-          }@else{
+          }@else if(signal=='offer'){
+                      <div>
+                       <h1>{{offer}}</h1>
+                       <h6><a href="/">continue shopping </a></h6>
+                  </div>
+          }
+          @else{
 
               <div>
-                    <h1>{{whitelist}}</h1>
+                    <h1>{{message}}</h1>
                     <h6><a href="/">continue shopping </a></h6>
                     
                         

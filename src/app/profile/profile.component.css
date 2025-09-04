@@ -18,9 +18,11 @@ background-color : #191919;
      background-color: #191919;
 
       display: flex;
-
+      height: inherit;
+      
       margin: 0;
       padding: 0;
+      
       
 
         
@@ -37,38 +39,73 @@ background-color : #191919;
         background :  black;
 
         width: 30%;
-        height: 100vh;
+           border-radius: 10px;
 
         color: #fff;
+        margin: 30px;
 }
 .contain{
 
       
-      width: 80%;
-      height: 100vh;
-      background-color: #191919;
+         width: 90%;
+         height: 100vh;
+         background-color: #191919;
 
-         display: flex;
+         display: flex ;
+         justify-content: center;
          flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        color: #fff;
-
-}
-.contain div{
-
-           display: flex ;
-           justify-content: center;
-           flex-direction: column;
-           align-items: center;
+         align-items: center;
          background-color : #3f3f3f;
          margin: 30px;
          width: 80%;
          height: 20%;
          border-radius: 10px;
          text-align: center;
+        color: #fff;
+
 }
+.cart-contain {
+
+         height: max-content;
+         width: inherit ;
+         background-color: #3f3f3f;
+         margin: 20px;
+           display: flex;
+
+                      
+ }
+     .image{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+          margin: 20px;
+      
+       background-color: #3f3f3f;
+
+         width: 50%;
+     } 
+     .image img{
+            background-color: #191919;
+          height: 300px;
+          width: 300px;
+          border-radius: 10px;
+     }
+     .product-contain{
+              margin: 20px;
+          display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+           flex-wrap: wrap;
+           
+           align-items: start;
+            width: 40%;
+           
+
+        
+     }
+
 .account a , button {
      
       color: #fff;
@@ -104,5 +141,23 @@ background-color : #191919;
         align-items: center;
         color: #fff;
 }
+.buyButton button{
+
+
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 30px;
+
+        background-color: rgb(0, 128, 0);
+        padding: 5px;
+        border-radius: 10px;
+        border: 2px,solid,#fff;
+}
+.buyButton button :hover{
+
+       
+       cursor: pointer;
+}
+
 
 

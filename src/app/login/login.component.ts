@@ -2,6 +2,8 @@ import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-login',
@@ -12,17 +14,22 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 
         userLogIn=true;
-         userData: any ;
+         user : User ={username:'', email:'',password:''} ;
+         userData :any ;
+         message : string='' ;
 
-             registerUsers :any =[{id : '01' , name:'Lokiesh' , email:'loki@gmail.com',password:'loki'}];
+           
 
-             constructor(private router :Router){
+            
+
+             constructor(private auth:AuthService,private router :Router){
 
              }
 
         toggleFunction(){
 
              this.userLogIn = ! this.userLogIn ;
+             this.message ='' ;
         }
           
         
@@ -32,29 +39,55 @@ export class LoginComponent {
 
         addDetails(val:NgForm){
 
-          console.log(val);
-          
-          this.userData=val ;
-
-            this.registerUsers.push(val);
+        
+                   
 
           
-     this.router.navigate(['profile'],{queryParams:{userData:this.userData.name}} )
-                   console.log(this.registerUsers);
+       this.router.navigate(['profile'],{queryParams:{userData:this.userData.name}} )
+                  
                    
 
         }
          
-        loginUser(){
+        login(val:NgForm){
+
+
+          this.userData =val;
+
+          console.log(this.userData.email , this.userData.password ,this.userData.name);
             
+               const success =   this.auth.login(this.userData.email , this.userData.password);
+              
+              if(success){
+                   
+                    this.router.navigate(['profile']) ;
+              }else{
+                this.message ="Invalid Email Or Password" ;
+              }
            
                     
           
         }
 
-          registerUser(){
+          register(val:NgForm){
+            this.userData =val;
+
+          console.log(this.userData.email , this.userData.password ,this.userData.name);
+
+          this.user.email = this.userData.email ;
+           this.user.password = this.userData.password
+             this.user.username =this.userData.name ;
+
+               const success = this.auth.register(this.user) ;
+
+               this.message = success ? 'Registration successful!' : 'User already exists!' ;
+
+                 
+           
+           
+                   
                   
-                  
+                   
           }
 
          
